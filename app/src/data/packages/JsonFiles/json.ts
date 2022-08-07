@@ -29,19 +29,21 @@ export class Json implements JsonRepository {
   }
 
   typescript(): IJsonFiles {
+    const json = new Json();
+
+    const { devDependencies, dependencies } = json.javascript();
+
     return {
       main: 'src/server.ts',
       scripts: {
         dev: 'ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/server.ts',
         start: 'nodemon src/server.ts',
       },
-      dependencies: { ...this.javascript().dependencies },
+      dependencies: { ...devDependencies },
       devDependencies: {
-        ...this.javascript().devDependencies,
+        ...dependencies,
         typescript: '^4.7.2',
         'ts-node-dev': '^2.0.0',
-        '@types/body-parser': '^1.19.2',
-        '@types/cors': '^2.8.12',
         '@types/express': '^4.17.13',
       },
     };
