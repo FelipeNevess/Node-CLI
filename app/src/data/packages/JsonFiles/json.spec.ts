@@ -18,6 +18,8 @@ describe('Test Json', () => {
 
     expect(javascript()).toHaveProperty('main');
     expect(javascript()).toHaveProperty('scripts');
+    expect(javascript()).toHaveProperty('dependencies');
+    expect(javascript()).toHaveProperty('devDependencies');
   });
 
   test('Should return an object with the correct keys in method typescript', () => {
@@ -25,5 +27,7 @@ describe('Test Json', () => {
 
     expect(typescript()).toHaveProperty('main');
     expect(typescript()).toHaveProperty('scripts');
+    expect(typescript()).toHaveProperty('dependencies');
+    expect(typescript()).toHaveProperty('devDependencies');
   });
 });
