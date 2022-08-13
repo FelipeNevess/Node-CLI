@@ -1,16 +1,16 @@
-import { writeFile } from 'fs/promises';
-import { join } from 'path';
-
-import { IWrite } from './interface/IWrite';
+import { AppError } from '../../errors';
+import { IWriteFile } from './interface/IWrite';
+import { WriteFilePromises } from './write';
 import { IWriteDTO } from './interface/IWriteDTO';
 
-import { AppError } from '../../errors';
+class WriteFile implements IWriteFile {
+  constructor(private writeFile: WriteFilePromises) {}
 
-class WriteFile implements IWrite {
-  async write({ filename, text }: IWriteDTO): Promise<void | undefined> {
+  async execute({ filename, text }: IWriteDTO): Promise<void | undefined> {
     try {
-      await writeFile(join(__dirname, filename.toLowerCase()), text, {
-        flag: 'w',
+      await this.writeFile.write({
+        filename,
+        text,
       });
     } catch (err) {
       if (typeof filename !== 'string') {
