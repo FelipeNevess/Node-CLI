@@ -1,18 +1,21 @@
-import { readFile } from 'fs/promises';
-import { join } from 'path';
-
-import { IRead, IReadDTO } from './interface';
 import { AppError } from '../../errors';
+import { IReadDTO, IReadFile } from './interface';
+import { ReadFilePromises } from './read';
 
-class ReadFile implements IRead {
-  async read({ directory, filename }: IReadDTO): Promise<string | undefined> {
+class ReadFile implements IReadFile {
+  constructor(private readFile: ReadFilePromises) {}
+
+  async execute({
+    directory,
+    filename,
+  }: IReadDTO): Promise<string | undefined> {
     try {
-      const data = await readFile(
-        join(__dirname, directory.toLowerCase(), filename.toLowerCase()),
-        'utf-8',
-      );
+      const response = await this.readFile.read({
+        directory,
+        filename,
+      });
 
-      return data;
+      return response;
     } catch {
       if (typeof filename !== 'string') {
         throw new AppError('O arquivo deve ser do tipo string');

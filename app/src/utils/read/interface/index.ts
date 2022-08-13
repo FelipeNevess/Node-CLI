@@ -1,4 +1,4 @@
-import { IRead } from './IRead';
+import { IReadFile, IReadFilePromises } from './IRead';
 import { IReadDTO } from './IReadDTO';
 
-export { IRead, IReadDTO };
+export { IReadFile, IReadDTO, IReadFilePromises };
