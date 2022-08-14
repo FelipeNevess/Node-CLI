@@ -1,7 +1,4 @@
 {
-  "code-runner.executorMap": {
-    "typescript": "yarn ts-node-dev --transpile-only --ignore-watch node_modules --respawn app/run.ts",
-  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll": true
