@@ -15,7 +15,7 @@ export interface IQuestions {
 
   message: string;
 
-  initial?: boolean | number;
+  initial?: boolean | number | string;
 
   choices?: Array<IChoices>;
 

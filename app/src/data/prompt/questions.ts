@@ -2,6 +2,12 @@ import { IQuestions } from './interface';
 
 const questions: Array<IQuestions> = [
   {
+    type: 'text',
+    name: 'project',
+    message: `Qual o nome do projeto?`,
+    initial: 'my-app',
+  },
+  {
     type: 'toggle',
     name: 'git',
     message: 'Deseja inicializar o git?',
