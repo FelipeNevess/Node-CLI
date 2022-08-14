@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { Prompt } from './src/data/prompt';
 import { App } from './src/app';
 
