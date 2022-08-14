@@ -1,5 +1,5 @@
-import { IQuestions } from '../data/prompt/interface';
+import { IPromptDTO } from '../data/prompt/interface';
 
 export interface IAppPrompt {
-  getStarted(): Promise<IQuestions>;
+  getStarted(): Promise<IPromptDTO>;
 }

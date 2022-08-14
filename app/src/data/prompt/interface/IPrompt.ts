@@ -1,5 +1,5 @@
-import { IQuestions } from './IQuestions';
+import { IPromptDTO } from './IPromptDTO';
 
 export interface IPrompt {
-  start(): Promise<IQuestions>;
+  start(): Promise<IPromptDTO>;
 }
