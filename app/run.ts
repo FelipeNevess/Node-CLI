@@ -1,9 +1,5 @@
 #!/usr/bin/env node
 
-import { Prompt } from './src/data/prompt';
-import { App } from './src/app';
-
-const prompt = new Prompt();
-const app = new App(prompt);
+import { app } from './src';
 
 app.getStarted();

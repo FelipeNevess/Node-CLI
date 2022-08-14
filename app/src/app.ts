@@ -1,14 +1,11 @@
-import { Prompt } from './data/prompt';
-import { IQuestions } from './data/prompt/interface';
-import { IAppPrompt } from './interface/IAppPrompt';
+import { Initialize } from './initialize';
+import { IAppPrompt } from './interfaces';
 
 class App implements IAppPrompt {
-  constructor(private prompt: Prompt) {}
+  constructor(private initialize: Initialize) {}
 
-  async getStarted(): Promise<IQuestions> {
-    // console.log(await this.prompt.start());
-
-    return await this.prompt.start();
+  getStarted(): void {
+    this.initialize.start();
   }
 }
 

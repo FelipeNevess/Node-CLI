@@ -1,14 +1,14 @@
 import { prompt } from 'prompts';
 
-import { IPrompt, IQuestions } from './interface';
+import { IPrompts, IPromptDTO } from './interface';
 import { questions } from './questions';
 
-class Prompt implements IPrompt {
-  async start(): Promise<IQuestions> {
-    const response: IQuestions = await prompt(questions);
+class Prompts implements IPrompts {
+  async start(): Promise<IPromptDTO> {
+    const response = await prompt(questions);
 
     return response;
   }
 }
 
-export { Prompt };
+export { Prompts };
