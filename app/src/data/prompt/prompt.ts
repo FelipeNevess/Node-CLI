@@ -1,9 +1,9 @@
 import { prompt } from 'prompts';
 
-import { IPrompt, IPromptDTO } from './interface';
+import { IPrompts, IPromptDTO } from './interface';
 import { questions } from './questions';
 
-class Prompt implements IPrompt {
+class Prompts implements IPrompts {
   async start(): Promise<IPromptDTO> {
     const response = await prompt(questions);
 
@@ -11,4 +11,4 @@ class Prompt implements IPrompt {
   }
 }
 
-export { Prompt };
+export { Prompts };
