@@ -1,4 +1,5 @@
 import { Check } from './check';
+import { TerminalDecoration } from './terminal';
 
 import { ExecSync } from '../utils/exec/exec';
 import { ExecCommands } from '../utils/exec';
@@ -28,6 +29,9 @@ const writeFile = new WriteFile(writeFilePromises, check);
 const execSync = new ExecSync();
 const execCommands = new ExecCommands(execSync, check);
 
+//////////////////////////////////////////
+const terminalDecoration = new TerminalDecoration();
+
 ////////////// Export files //////////////
 
-export { readFile, writeFile, execCommands };
+export { readFile, writeFile, execCommands, terminalDecoration };

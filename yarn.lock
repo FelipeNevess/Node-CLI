@@ -689,6 +689,16 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/clear@^0.1.2":
+  "integrity" "sha512-h3GHp9BuPgY3X+WKWwJgTIl/h38KkcdU6JG28i1xdrlS8YXVi3V1YrhaZkjuvur97qZo8TMQjVXJorTf87LvfA=="
+  "resolved" "https://registry.npmjs.org/@types/clear/-/clear-0.1.2.tgz"
+  "version" "0.1.2"
+
+"@types/figlet@^1.5.4":
+  "integrity" "sha512-cskPTju7glYgzvkJy/hftqw7Fen3fsd0yrPOqcbBLJu+YdDQuA438akS1g+2XVKGzsQOnXGV2I9ePv6xUBnKMQ=="
+  "resolved" "https://registry.npmjs.org/@types/figlet/-/figlet-1.5.4.tgz"
+  "version" "1.5.4"
+
 "@types/graceful-fs@^4.1.3":
   "integrity" "sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw=="
   "resolved" "https://registry.npmjs.org/@types/graceful-fs/-/graceful-fs-4.1.5.tgz"
@@ -1157,6 +1167,11 @@
   "integrity" "sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA=="
   "resolved" "https://registry.npmjs.org/cjs-module-lexer/-/cjs-module-lexer-1.2.2.tgz"
   "version" "1.2.2"
+
+"clear@^0.1.0":
+  "integrity" "sha512-qMjRnoL+JDPJHeLePZJuao6+8orzHMGP04A8CdwCNsKhRbOnKRjefxONR7bwILT3MHecxKBjHkKL/tkZ8r4Uzw=="
+  "resolved" "https://registry.npmjs.org/clear/-/clear-0.1.0.tgz"
+  "version" "0.1.0"
 
 "cliui@^7.0.2":
   "integrity" "sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ=="
@@ -1664,6 +1679,11 @@
   "version" "2.0.1"
   dependencies:
     "bser" "2.1.1"
+
+"figlet@^1.5.2":
+  "integrity" "sha512-WOn21V8AhyE1QqVfPIVxe3tupJacq1xGkPTB4iagT6o+P2cAgEOOwIxMftr4+ZCTI6d551ij9j61DFr0nsP2uQ=="
+  "resolved" "https://registry.npmjs.org/figlet/-/figlet-1.5.2.tgz"
+  "version" "1.5.2"
 
 "file-entry-cache@^6.0.1":
   "integrity" "sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg=="
