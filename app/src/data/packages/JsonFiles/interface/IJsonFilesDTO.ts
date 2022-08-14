@@ -1,4 +1,4 @@
-export interface IJsonFiles {
+export interface IJsonFilesDTO {
   main: string;
   scripts: object;
   dependencies: object;

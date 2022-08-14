@@ -1,8 +1,8 @@
-import { IJsonFiles } from '../interface';
-import { JsonRepository } from '../protocols/json-repository';
+import { IJsonFiles } from './interface';
+import { IJsonFilesDTO } from './interface';
 
-export class Json implements JsonRepository {
-  javascript(): IJsonFiles {
+export class Json implements IJsonFiles {
+  javascript(): IJsonFilesDTO {
     return {
       main: 'src/server.js',
 
@@ -28,7 +28,7 @@ export class Json implements JsonRepository {
     };
   }
 
-  typescript(): IJsonFiles {
+  typescript(): IJsonFilesDTO {
     const json = new Json();
 
     const { devDependencies, dependencies } = json.javascript();
