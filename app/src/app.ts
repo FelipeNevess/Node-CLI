@@ -1,16 +1,11 @@
-import { Prompt } from './data/prompt';
-import { IPromptDTO } from './data/prompt/interface';
-import { IAppPrompt } from './interface/IAppPrompt';
+import { Initialize } from './initialize';
+import { IAppPrompt } from './interfaces';
 
 class App implements IAppPrompt {
-  constructor(private prompt: Prompt) {}
+  constructor(private initialize: Initialize) {}
 
-  async getStarted(): Promise<IPromptDTO> {
-    const response = await this.prompt.start();
-
-    // console.log(response)
-
-    return response;
+  getStarted(): void {
+    this.initialize.start();
   }
 }
 
