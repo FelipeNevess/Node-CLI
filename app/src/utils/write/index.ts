@@ -1,10 +1,10 @@
-import { AppError } from '../../errors';
 import { IWriteFile } from './interface/IWrite';
 import { WriteFilePromises } from './write';
 import { IWriteDTO } from './interface/IWriteDTO';
+import { Check } from '../check';
 
 class WriteFile implements IWriteFile {
-  constructor(private writeFile: WriteFilePromises) {}
+  constructor(private writeFile: WriteFilePromises, private check: Check) {}
 
   async execute({ filename, text }: IWriteDTO): Promise<void | undefined> {
     try {
@@ -12,14 +12,11 @@ class WriteFile implements IWriteFile {
         filename,
         text,
       });
-    } catch (err) {
-      if (typeof filename !== 'string') {
-        throw new AppError('O arquivo deve ser do tipo string');
-      } else if (typeof text !== 'string') {
-        throw new AppError('O texto deve ser do tipo string');
-      } else {
-        throw new AppError(`Erro de escrita! ${err}`);
-      }
+    } catch {
+      this.check.checkWrite({
+        filename,
+        text,
+      });
     }
   }
 }

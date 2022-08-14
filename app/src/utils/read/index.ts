@@ -1,9 +1,9 @@
-import { AppError } from '../../errors';
+import { Check } from '../check';
 import { IReadDTO, IReadFile } from './interface';
 import { ReadFilePromises } from './read';
 
 class ReadFile implements IReadFile {
-  constructor(private readFile: ReadFilePromises) {}
+  constructor(private readFile: ReadFilePromises, private check: Check) {}
 
   async execute({
     directory,
@@ -17,13 +17,10 @@ class ReadFile implements IReadFile {
 
       return response;
     } catch {
-      if (typeof filename !== 'string') {
-        throw new AppError('O arquivo deve ser do tipo string');
-      } else if (typeof directory !== 'string') {
-        throw new AppError('O diretório deve ser do tipo string');
-      } else {
-        throw new AppError('Erro de leitura, arquivo não encontrado!');
-      }
+      this.check.checkRead({
+        filename,
+        directory,
+      });
     }
   }
 }

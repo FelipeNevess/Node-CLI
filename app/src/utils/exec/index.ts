@@ -1,27 +1,18 @@
-import { AppError } from '../../errors';
 import { ExecSync } from './exec';
 import { IExec, IExecDTO } from './interface';
+import { Check } from '../check';
 
 class ExecCommands implements IExec {
-  constructor(private execDommands: ExecSync) {}
+  constructor(private execDommands: ExecSync, private check: Check) {}
 
   execute({ commands }: IExecDTO): void {
     try {
       this.execDommands.exec({ commands });
     } catch (err) {
-      let errorMessage = '';
-
-      if (err instanceof Error) {
-        errorMessage = err.message;
-      }
-
-      if (typeof commands !== 'string' && typeof commands !== 'object') {
-        throw new AppError(`Tipo ${typeof commands} inválido`);
-      } else if (errorMessage.includes('not found')) {
-        throw new AppError('Este comando não existe');
-      } else {
-        throw new AppError('O (diretorio/arquivo) já existe');
-      }
+      this.check.checkCommands({
+        commands,
+        err: err as Error,
+      });
     }
   }
 }
