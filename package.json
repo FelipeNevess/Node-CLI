@@ -1,9 +1,9 @@
 {
   "name": "node-cli",
   "version": "1.0.0",
-  "main": "app/run.ts",
+  "main": "./dist/run.js",
   "bin": {
-    "node-create-app": "./bin/cli.js"
+    "node-app": "./dist/run.js"
   },
   "author": "felipenevess <felipe012neves@gmail.com>",
   "license": "MIT",
@@ -28,10 +28,14 @@
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn app/run.ts",
     "test": "jest --passWithNoTests --silent --runInBand",
     "test:verbose": "jest --runInBand",
-    "test:unit": "npm test -- --watch -c jest-unit-config.js"
+    "test:unit": "npm test -- --watch -c jest-unit-config.js",
+    "local": "npm i -g && node-app",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+    "build": "tsc -p ."
   },
   "devDependencies": {
-    "@types/jest": "28.1.6",
+    "@types/jest": "^28.1.6",
+    "@types/mocha": "^9.1.1",
     "@types/node": "^18.7.2",
     "@types/prompts": "2.0.14",
     "@typescript-eslint/eslint-plugin": "5.32.0",
@@ -49,6 +53,7 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "prompts": "^2.4.2"
+    "prompts": "^2.4.2",
+    "chalk": "^4.1.2"
   }
 }
