@@ -1,9 +1,8 @@
 import { Check } from '../check';
-import { IReadDTO, IReadFile } from './interface';
-import { ReadFilePromises } from './read';
+import { IReadDTO, IReadFile, IReadFilePromises } from './interface';
 
 class ReadFile implements IReadFile {
-  constructor(private readFile: ReadFilePromises, private check: Check) {}
+  constructor(private readFile: IReadFilePromises, private check: Check) {}
 
   async execute({
     directory,

@@ -1,9 +1,8 @@
-import { ExecSync } from './exec';
-import { IExec, IExecDTO } from './interface';
+import { IExec, IExecDTO, IExecSync } from './interface';
 import { Check } from '../check';
 
 class ExecCommands implements IExec {
-  constructor(private execDommands: ExecSync, private check: Check) {}
+  constructor(private execDommands: IExecSync, private check: Check) {}
 
   execute({ commands }: IExecDTO): void {
     try {
