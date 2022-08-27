@@ -1,6 +1,6 @@
 import { IWriteDTO } from './IWriteDTO';
 
-export interface IWritePromises {
+export interface IWriteFilePromises {
   write({ filename, text }: IWriteDTO): Promise<void | undefined>;
 }
 

@@ -1,3 +1,3 @@
-export interface Iregex {
+export interface IRegex {
   regex: (p: string) => boolean;
 }

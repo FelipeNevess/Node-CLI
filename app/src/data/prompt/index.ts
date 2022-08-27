@@ -1,8 +1,8 @@
-import { IPrompt, IPromptDTO } from './interface';
+import { IPrompt, IPromptDTO, IPrompts } from './interface';
 import { Prompts } from './prompt';
 
 class Prompt implements IPrompt {
-  constructor(private prompt: Prompts) {}
+  constructor(private prompt: IPrompts) {}
 
   execute(): Promise<IPromptDTO> {
     const response = this.prompt.start();
