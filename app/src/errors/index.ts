@@ -1,9 +1,3 @@
-class AppError extends Error {
-  constructor(message: string) {
-    super(message);
-
-    this.message = message;
-  }
-}
+import { AppError } from './appError';
 
 export { AppError };
