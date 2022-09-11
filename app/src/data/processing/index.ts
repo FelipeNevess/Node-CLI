@@ -1,18 +1,17 @@
-import { Regex } from './regex';
-import { UseGit } from './useGit';
-import { UseTypescript } from './useTypescript';
+import { execCommands, writeFile } from '../../utils';
 
-///////////////////////////////////////////
-// Validação regex
-const regex = new Regex();
+import { GetCommands } from './commands/getCommands';
+import { GetFiles } from './files/getFiles';
+import { Commands } from './commands';
+import { Files } from './files';
 
-///////////////////////////////////////////
-// adiciona o Git
-const useGit = new UseGit(regex);
+import { Processig } from './processing';
 
-///////////////////////////////////////////
-// adiciona o Typescript ou Javascript
+const commands = new Commands(execCommands);
+const files = new Files(writeFile);
+const processing = new Processig(commands, files);
 
-const useTypescript = new UseTypescript(regex);
+const getCommands = new GetCommands();
+const getFiles = new GetFiles();
 
-export { useGit, useTypescript };
+export { processing, getCommands, getFiles };
