@@ -6,9 +6,13 @@ import { IWriteDTO } from './interface/IWriteDTO';
 
 class WriteFilePromises implements IWriteFilePromises {
   async write({ filename, text }: IWriteDTO): Promise<void | undefined> {
-    await writeFile(join(__dirname, filename.toLowerCase()), text, {
-      flag: 'w',
-    });
+    await writeFile(
+      join(__dirname, '..', '..', '..', '..', filename.toLowerCase()),
+      text as string,
+      {
+        flag: 'w',
+      },
+    );
   }
 }
 
