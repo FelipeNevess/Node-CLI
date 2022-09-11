@@ -142,5 +142,6 @@ dist
 .svelte-kit
 
 *.txt
+proposal.md
 
 # End of https://www.toptal.com/developers/gitignore/api/node
