@@ -1,9 +1,9 @@
-import { IWriteFile, IWritePromises } from './interface/IWrite';
+import { IWriteFile, IWriteFilePromises } from './interface/IWrite';
 import { IWriteDTO } from './interface/IWriteDTO';
 import { Check } from '../check';
 
 class WriteFile implements IWriteFile {
-  constructor(private writeFile: IWritePromises, private check: Check) {}
+  constructor(private writeFile: IWriteFilePromises, private check: Check) { }
 
   async execute({ filename, text }: IWriteDTO): Promise<void | undefined> {
     try {

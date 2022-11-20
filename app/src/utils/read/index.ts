@@ -2,7 +2,7 @@ import { Check } from '../check';
 import { IReadDTO, IReadFile, IReadFilePromises } from './interface';
 
 class ReadFile implements IReadFile {
-  constructor(private readFile: IReadFilePromises, private check: Check) {}
+  constructor(private readFile: IReadFilePromises, private check: Check) { }
 
   async execute({
     directory,
