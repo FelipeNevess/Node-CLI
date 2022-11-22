@@ -14,7 +14,7 @@ Essa é uma versão melhorada desse outro projeto [Cli-Nodejs](https://github.co
 
 ## Atualmente ele está publicado no [Npm](https://www.npmjs.com/package/node-cli-v2?activeTab=readme)
 #### Para executar ele pelo npm:
-```npx node-cli-v2```
+```npx node-ff```
 
 ## Instalação
 
