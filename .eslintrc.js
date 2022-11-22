@@ -22,5 +22,11 @@ module.exports = {
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     '@typescript-eslint/no-empty-function': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        'endOfLine': 'auto',
+      }
+    ]
   },
 };
