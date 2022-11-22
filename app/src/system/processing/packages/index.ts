@@ -1,5 +1,5 @@
 import { whichJSON } from './json';
-import { serverJav, serverTyp } from './app';
+import { serverJav, serverTyp, tsconfig } from './app';
 import {
   editorconfig,
   prettierrc,
@@ -16,5 +16,6 @@ export {
   gitIgnore,
   readme,
   serverJav,
-  serverTyp
+  serverTyp,
+  tsconfig
 }

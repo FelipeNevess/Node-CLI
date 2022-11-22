@@ -8,7 +8,8 @@ import {
   gitIgnore,
   readme,
   serverJav,
-  serverTyp
+  serverTyp,
+  tsconfig
 } from './packages';
 
 class Processig {
@@ -75,7 +76,14 @@ class Processig {
         text: serverTyp,
       });
 
-      execCommands.execute({ commands: `cd ${project} && tsc --init` });
+      await writeFile.execute({
+        directory_name: `${project}`,
+        filename: 'tsconfig.json',
+        text: '',
+        formate: true,
+        json: tsconfig
+      });
+
     } else {
       await writeFile.execute({
         directory_name: `${project}/src`,
@@ -97,7 +105,7 @@ class Processig {
 
   private finished({ project }: IInProcessingDTO) {
     execCommands.execute({ commands: `cd ${project} && yarn` });
-    console.log('\n---- ✔️ FINALIZADO ----');
+    console.log('\nFINALIZADO');
   }
 }
 
