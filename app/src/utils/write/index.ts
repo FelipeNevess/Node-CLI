@@ -1,16 +1,31 @@
 import { IWriteFile, IWriteFilePromises } from './interface/IWrite';
-import { IWriteDTO } from './interface/IWriteDTO';
 import { Check } from '../check';
+import { IWriteFiles } from './interface';
 
 class WriteFile implements IWriteFile {
   constructor(private writeFile: IWriteFilePromises, private check: Check) { }
 
-  async execute({ filename, text }: IWriteDTO): Promise<void | undefined> {
+  async execute({ filename, text, directory_name, formate, json }: IWriteFiles): Promise<void | undefined> {
     try {
-      await this.writeFile.write({
-        filename,
-        text,
-      });
+      if (typeof filename === 'object') {
+        filename.forEach(async (file, i) => {
+          await this.writeFile.write({
+            filename: file,
+            text: text[i],
+            directory_name: typeof directory_name === 'object' ? directory_name[i] : directory_name,
+            formate,
+            json: typeof json === 'object' ? json[i as keyof typeof json] : json,
+          });
+        });
+      } else {
+        await this.writeFile.write({
+          filename,
+          text,
+          directory_name,
+          formate,
+          json
+        });
+      }
     } catch {
       this.check.checkWrite({
         filename,

@@ -5,13 +5,11 @@ import { IWriteFilePromises } from './interface/IWrite';
 import { IWriteDTO } from './interface/IWriteDTO';
 
 class WriteFilePromises implements IWriteFilePromises {
-  async write({ filename, text }: IWriteDTO): Promise<void | undefined> {
+  async write({ directory_name, filename, text, formate, json }: IWriteDTO): Promise<void | undefined> {
     await writeFile(
-      join(__dirname, '..', '..', '..', '..', filename.toLowerCase()),
-      text as string,
-      {
-        flag: 'w',
-      },
+      join(directory_name as string, filename),
+      formate ? JSON.stringify(json, null, 2) : text as string,
+      { flag: 'w', }
     );
   }
 }
