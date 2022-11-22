@@ -45,10 +45,6 @@ yarn
 yarn dev #ou
 npm run dev
 
-# Roda todos os testes
-yarn test #ou
-npm test
-
 # Cria um executável NPM em sua maquina local
 
 yarn build #ou
