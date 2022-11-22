@@ -12,6 +12,9 @@ Node-cli tem como grande objetivo criar um projeto base feito em NodeJs com conf
 
 Essa é uma versão melhorada desse outro projeto [Cli-Nodejs](https://github.com/FelipeNevess/Cli-Nodejs)
 
+## Atualmente ele está publicado no [Npm](https://www.npmjs.com/package/node-cli-v2?activeTab=readme)
+#### Para executar ele pelo npm, rode: **npx node-cli-v2**
+
 ## Instalação
 
 ### Instalando dependências
