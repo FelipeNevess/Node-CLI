@@ -2,37 +2,21 @@ import clear from 'clear';
 
 import { IInitialize } from './interfaces';
 import { terminalDecoration } from './utils';
-import { getCommands, getFiles, Prompt, Prompts, processing } from './data';
+import { Prompt, Prompts, Processig } from './system';
 
 class Initialize implements IInitialize {
   async start(): Promise<void> {
-    clear();
-    terminalDecoration.decorate('Node CLI');
+    this.terminal();
 
     const prompt = new Prompts();
-    const { project, git, typing } = await new Prompt(prompt).execute();
+    const response = await new Prompt(prompt).execute();
 
-    const responseCommands = getCommands.execute({
-      git,
-      typing,
-    });
+    if (response) { new Processig(response); }
+  }
 
-    const responseFiles = getFiles.execute({
-      git,
-      typing,
-    });
-
-    console.log(responseFiles);
-
-    // processing.processingCommands({
-    //   commands: [`mkdir ${project}`, `cd ${project} && ${responseCommands}`],
-    // });
-
-    // processing.processingFiles({
-    //   filename: 'index.ts',
-    //   text: 'felipe',
-    //   projectName: project,
-    // });
+  private terminal() {
+    clear();
+    terminalDecoration.decorate('Node CLI');
   }
 }
 
