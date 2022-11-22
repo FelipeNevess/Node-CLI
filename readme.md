@@ -10,6 +10,8 @@ A sigla em inglês command-line interface (CLI), significa Interface de Linha de
 
 Node-cli tem como grande objetivo criar um projeto base feito em NodeJs com configurações predefinidas mais atuais, que possibilita uma rápida agilidade na hora de iniciar um projeto sem se preocupar com as configurações iniciais.
 
+Essa é uma versão melhorada desse outro projeto [Cli-Nodejs](https://github.com/FelipeNevess/Cli-Nodejs)
+
 ## Instalação
 
 ### Instalando dependências
