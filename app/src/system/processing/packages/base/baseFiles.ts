@@ -8,7 +8,10 @@ export const editorconfig = `
   charset = utf-8
   trim_trailing_whitespace = true # defina como true para remover quaisquer caracteres de espaço em branco
   insert_final_newline = true  # defina como true para garantir que o arquivo termine com uma nova linha ao salvar
-`.toString().replaceAll('  ', '').trim();
+`
+  .toString()
+  .replaceAll('  ', '')
+  .trim();
 
 export const prettierrc = `
   module.exports = {
@@ -18,14 +21,17 @@ export const prettierrc = `
     \tprintWidth: 80,
     \ttrailingComma: 'all'
   }
-`.toString().replaceAll('  ', '').trim();
+`
+  .toString()
+  .replaceAll('  ', '')
+  .trim();
 
 export const vcCodeSettings = {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll": true
-  }
-}
+  'editor.codeActionsOnSave': {
+    'source.fixAll.eslint': true,
+    'source.fixAll': true,
+  },
+};
 
 export const readme = `
   # My project
@@ -42,4 +48,7 @@ export const readme = `
 
   ## License
   [MIT]...
-`.toString().replaceAll('  ', '').trim();
+`
+  .toString()
+  .replaceAll('  ', '')
+  .trim();

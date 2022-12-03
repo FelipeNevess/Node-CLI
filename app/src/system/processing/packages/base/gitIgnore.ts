@@ -143,4 +143,7 @@ dist
 .svelte-kit
 
 # End of https://www.toptal.com/developers/gitignore/api/node
-`.toString().replaceAll('  ', '').trim();
+`
+  .toString()
+  .replaceAll('  ', '')
+  .trim();

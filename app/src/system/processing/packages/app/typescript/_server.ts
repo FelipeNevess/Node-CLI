@@ -15,4 +15,7 @@ export const serverTyp = `
   );
 
   app.listen(port, () => console.log('Service started 🟢'));
-`.toString().replaceAll('  ', '').trim();
+`
+  .toString()
+  .replaceAll('  ', '')
+  .trim();

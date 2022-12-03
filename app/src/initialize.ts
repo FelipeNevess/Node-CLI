@@ -11,7 +11,9 @@ class Initialize implements IInitialize {
     const prompt = new Prompts();
     const response = await new Prompt(prompt).execute();
 
-    if (response) { new Processig(response); }
+    if (response) {
+      new Processig(response);
+    }
   }
 
   private terminal() {

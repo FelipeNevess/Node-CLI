@@ -1,3 +1,3 @@
 import { IJson } from './IJson';
 
-export { IJson }
+export { IJson };
