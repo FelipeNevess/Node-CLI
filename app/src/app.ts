@@ -4,7 +4,7 @@ class App implements IAppPrompt {
   constructor(private initialize: IInitialize) {}
 
   getStarted(): void {
-    this.initialize.start();
+    this.initialize.init();
   }
 }
 

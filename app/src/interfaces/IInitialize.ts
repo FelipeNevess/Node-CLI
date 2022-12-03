@@ -1,3 +1,3 @@
 export interface IInitialize {
-  start(): void;
+  init(): void;
 }
