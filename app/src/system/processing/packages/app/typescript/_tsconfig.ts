@@ -14,5 +14,5 @@ export const tsconfig = {
     types: ['node'],
   },
   include: ['./src'],
-  exclude: ['node_modules', 'app/src/**/*.spec.ts'],
+  exclude: ['node_modules', './src/**/*.spec.ts'],
 };

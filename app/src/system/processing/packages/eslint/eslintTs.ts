@@ -1,3 +1,4 @@
+export const eslintTs = `
 module.exports = {
   env: {
     browser: true,
@@ -25,8 +26,9 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-        endOfLine: 'auto',
-      },
-    ],
+        'endOfLine': 'auto',
+      }
+    ]
   },
 };
+`.trim();

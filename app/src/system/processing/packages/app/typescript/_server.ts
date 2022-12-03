@@ -7,12 +7,9 @@ export const serverTyp = `
   const port = process.env.PORT || 3333;
 
   app.use(bodyParser.json());
-  app.use(cors({ origin: "http://localhost:3333", methods: "GET" }));
+  app.use(cors({ origin: "http://localhost:3000", methods: "GET" }));
 
-  app.get('/', (_req, res) => res
-    \t.status(200)
-    \t.json({ name: "Hello World!" })
-  );
+  app.get('/', (_req, res) => res.status(200).json({ name: 'Hello World!' }));
 
   app.listen(port, () => console.log('Service started 🟢'));
 `

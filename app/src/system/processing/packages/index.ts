@@ -1,5 +1,6 @@
 import { whichJSON } from './json';
 import { serverJav, serverTyp, tsconfig } from './app';
+import { eslintConfig } from './eslint';
 import {
   editorconfig,
   prettierrc,
@@ -9,13 +10,14 @@ import {
 } from './base';
 
 export {
-  whichJSON,
+  gitIgnore,
   editorconfig,
   prettierrc,
   vcCodeSettings,
-  gitIgnore,
   readme,
   serverJav,
   serverTyp,
   tsconfig,
+  eslintConfig,
+  whichJSON,
 };

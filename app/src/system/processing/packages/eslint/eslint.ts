@@ -1,4 +1,4 @@
-module.exports = {
+export const eslintrcJs = `module.exports = {
   env: {
     browser: true,
     es6: true,
@@ -29,4 +29,13 @@ module.exports = {
       },
     ],
   },
-};
+}`;
+
+export const eslintIgnore = `
+/*.js
+node_modules
+dist
+`
+  .toString()
+  .replaceAll('  ', '')
+  .trim();

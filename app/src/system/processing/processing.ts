@@ -10,6 +10,7 @@ import {
   serverJav,
   serverTyp,
   tsconfig,
+  eslintConfig,
 } from './packages';
 
 class Processig {
@@ -20,8 +21,8 @@ class Processig {
   private async in_process() {
     const { project, git, typing } = this.resultPrompt;
 
-    await this.create_initial_structure({ project });
-    await this.json({ project, json: new whichJSON(typing).return_json() });
+    await this.create_initial_structure({ project, typing });
+    await this.json({ project, json: new whichJSON(typing).json });
 
     if (git) {
       await this.git({ project });
@@ -31,7 +32,10 @@ class Processig {
     this.finished({ project });
   }
 
-  private async create_initial_structure({ project }: IInProcessingDTO) {
+  private async create_initial_structure({
+    project,
+    typing,
+  }: IInProcessingDTO) {
     execCommands.execute({
       commands: `
         mkdir ${project} &&
@@ -41,10 +45,10 @@ class Processig {
     });
 
     console.log('\nPROCESSANDO...');
-    await this.initial_files({ project });
+    await this.initial_files({ project, typing });
   }
 
-  private async initial_files({ project }: IInProcessingDTO) {
+  private async initial_files({ project, typing }: IInProcessingDTO) {
     await writeFile.execute({
       directory_name: `${project}/.vscode`,
       filename: 'settings.json',
@@ -55,9 +59,11 @@ class Processig {
 
     await writeFile.execute({
       directory_name: project,
-      filename: ['.editorconfig', '.prettierrc', 'readme.md'],
+      filename: ['.editorconfig', '.prettierrc.js', 'readme.md'],
       text: [editorconfig, prettierrc, readme],
     });
+
+    await this.eslint({ project, typing });
   }
 
   private async git({ project }: IInProcessingDTO) {
@@ -101,6 +107,16 @@ class Processig {
       text: '',
       formate: true,
       json,
+    });
+  }
+
+  private async eslint({ project, typing }: IInProcessingDTO) {
+    const response = new eslintConfig(typing);
+
+    await writeFile.execute({
+      directory_name: project,
+      filename: ['.eslintrc.js', '.eslintignore'],
+      text: [response.configJs, response.ignore],
     });
   }
 

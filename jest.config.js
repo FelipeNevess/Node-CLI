@@ -7,14 +7,11 @@ module.exports = {
 
   coverageDirectory: 'coverage',
 
-  roots: [
-    '<rootDir>/app/src'
-  ],
+  roots: ['<rootDir>/app/src'],
 
   testEnvironment: 'jest-environment-node',
 
   transform: {
-    '.+\\.ts$': 'ts-jest'
+    '.+\\.ts$': 'ts-jest',
   },
-
-}
+};

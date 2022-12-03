@@ -1,7 +1,7 @@
 {
   "name": "node-ff",
-  "version": "1.1.0",
-  "main": "./dist/run.js",
+  "version": "1.5.0",
+  "main": "./app/run.ts",
   "bin": {
     "node-app": "./dist/run.js"
   },
@@ -29,9 +29,10 @@
     "test": "jest --passWithNoTests --silent --runInBand",
     "test:verbose": "jest --runInBand",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
-    "local": "sudo npm i -g || npm i -g && node-app",
+    "local": "npm remove -g && sudo npm i -g || npm i -g && node-app",
     "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "format:write": "prettier --write ./app"
   },
   "devDependencies": {
     "@types/clear": "^0.1.2",

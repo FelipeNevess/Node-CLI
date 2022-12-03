@@ -5,7 +5,7 @@ import { terminalDecoration } from './utils';
 import { Prompt, Prompts, Processig } from './system';
 
 class Initialize implements IInitialize {
-  async start(): Promise<void> {
+  async init(): Promise<void> {
     this.terminal();
 
     const prompt = new Prompts();
