@@ -4,10 +4,10 @@ export const editorconfig = `
   [*]
   indent_style = space
   indent_size = 2
-  end_of_line = crlf # defina como lf , cr ou crlf para controlar como as quebras de linha são representadas
+  end_of_line = crlf
   charset = utf-8
-  trim_trailing_whitespace = true # defina como true para remover quaisquer caracteres de espaço em branco
-  insert_final_newline = true  # defina como true para garantir que o arquivo termine com uma nova linha ao salvar
+  trim_trailing_whitespace = true
+  insert_final_newline = true
 `
   .toString()
   .replaceAll('  ', '')
