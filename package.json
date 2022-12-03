@@ -1,6 +1,6 @@
 {
   "name": "node-ff",
-  "version": "2.0.0",
+  "version": "1.5.0",
   "main": "./app/run.ts",
   "bin": {
     "node-app": "./dist/run.js"
