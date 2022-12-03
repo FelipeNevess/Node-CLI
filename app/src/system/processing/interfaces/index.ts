@@ -1,3 +1,3 @@
 import { IInProcessingDTO } from './IInProcessingDTO';
 
-export { IInProcessingDTO }
+export { IInProcessingDTO };

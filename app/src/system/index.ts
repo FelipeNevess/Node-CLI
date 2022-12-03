@@ -1,8 +1,4 @@
 import { Prompt, Prompts } from './prompt';
 import { Processig } from './processing';
 
-export {
-  Prompt,
-  Prompts,
-  Processig
-};
+export { Prompt, Prompts, Processig };

@@ -5,7 +5,7 @@ import {
   prettierrc,
   vcCodeSettings,
   readme,
-  gitIgnore
+  gitIgnore,
 } from './base';
 
 export {
@@ -17,5 +17,5 @@ export {
   readme,
   serverJav,
   serverTyp,
-  tsconfig
-}
+  tsconfig,
+};

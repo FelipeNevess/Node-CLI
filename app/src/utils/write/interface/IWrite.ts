@@ -6,5 +6,9 @@ export interface IWriteFilePromises {
 }
 
 export interface IWriteFile {
-  execute({ filename, text, directory_name }: IWriteFiles): Promise<void | undefined>;
+  execute({
+    filename,
+    text,
+    directory_name,
+  }: IWriteFiles): Promise<void | undefined>;
 }

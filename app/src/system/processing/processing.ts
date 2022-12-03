@@ -9,7 +9,7 @@ import {
   readme,
   serverJav,
   serverTyp,
-  tsconfig
+  tsconfig,
 } from './packages';
 
 class Processig {
@@ -23,7 +23,9 @@ class Processig {
     await this.create_initial_structure({ project });
     await this.json({ project, json: new whichJSON(typing).return_json() });
 
-    if (git) { await this.git({ project }); }
+    if (git) {
+      await this.git({ project });
+    }
 
     this.is_type({ project, typing });
     this.finished({ project });
@@ -35,7 +37,7 @@ class Processig {
         mkdir ${project} &&
         cd ${project} &&
         mkdir src .vscode
-      `
+      `,
     });
 
     console.log('\nPROCESSANDO...');
@@ -48,7 +50,7 @@ class Processig {
       filename: 'settings.json',
       text: '',
       formate: true,
-      json: vcCodeSettings
+      json: vcCodeSettings,
     });
 
     await writeFile.execute({
@@ -64,7 +66,7 @@ class Processig {
     await writeFile.execute({
       filename: '.gitignore',
       text: gitIgnore,
-      directory_name: project
+      directory_name: project,
     });
   }
 
@@ -81,9 +83,8 @@ class Processig {
         filename: 'tsconfig.json',
         text: '',
         formate: true,
-        json: tsconfig
+        json: tsconfig,
       });
-
     } else {
       await writeFile.execute({
         directory_name: `${project}/src`,
@@ -99,7 +100,7 @@ class Processig {
       filename: 'package.json',
       text: '',
       formate: true,
-      json
+      json,
     });
   }
 
@@ -109,4 +110,4 @@ class Processig {
   }
 }
 
-export { Processig }
+export { Processig };
