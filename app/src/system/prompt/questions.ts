@@ -4,13 +4,13 @@ const questions: Array<IQuestions> = [
   {
     type: 'text',
     name: 'project',
-    message: `Qual o nome do projeto?`,
+    message: `O nome do meu projeto será:`,
     initial: 'my-app',
   },
   {
     type: 'toggle',
     name: 'git',
-    message: 'Deseja inicializar o git?',
+    message: 'Quero inicializar o Git no meu projeto?',
     initial: true,
     active: 'yes',
     inactive: 'no',
@@ -19,7 +19,7 @@ const questions: Array<IQuestions> = [
   {
     type: 'toggle',
     name: 'typing',
-    message: 'Deseja usar Typescript?',
+    message: 'Quero criar meu projeto com Typescript?',
     initial: true,
     active: 'yes',
     inactive: 'no',

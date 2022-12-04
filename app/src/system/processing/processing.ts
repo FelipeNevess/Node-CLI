@@ -20,16 +20,29 @@ class Processig {
 
   private async in_process() {
     const { project, git, typing } = this.resultPrompt;
+    const nameProject = project.replace(/\s/g, '-');
 
-    await this.create_initial_structure({ project, typing });
-    await this.json({ project, json: new whichJSON(typing).json });
+    try {
+      await this.create_initial_structure({ project: nameProject, typing });
+      await this.json({
+        project: nameProject,
+        json: new whichJSON(typing).json,
+      });
 
-    if (git) {
-      await this.git({ project });
+      if (git) {
+        await this.git({ project: nameProject });
+      }
+
+      this.is_type({ project: nameProject, typing });
+      this.finished({ project: nameProject });
+    } catch (err) {
+      if (err instanceof Error) {
+        if (!err.message.includes('O (diretorio/arquivo) já existe')) {
+          execCommands.execute({ commands: `rm -rf ${nameProject}` });
+        }
+        console.error(err.message);
+      }
     }
-
-    this.is_type({ project, typing });
-    this.finished({ project });
   }
 
   private async create_initial_structure({
