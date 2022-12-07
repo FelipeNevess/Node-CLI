@@ -3,7 +3,7 @@ interface IChoices {
 
   description?: string;
 
-  value?: string | null;
+  value?: string | boolean;
 
   disabled?: boolean;
 }

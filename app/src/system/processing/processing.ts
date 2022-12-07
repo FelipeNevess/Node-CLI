@@ -1,55 +1,37 @@
-import { execCommands, writeFile } from '../../utils';
+import { exeCommands, writeFile } from '../../utils';
+import { Control } from './control';
 import { IInProcessingDTO } from './interfaces';
-import {
-  whichJSON,
-  editorconfig,
-  prettierrc,
-  vcCodeSettings,
-  gitIgnore,
-  readme,
-  serverJav,
-  serverTyp,
-  tsconfig,
-  eslintConfig,
-} from './packages';
 
 class Processig {
-  constructor(private resultPrompt: IInProcessingDTO) {
+  private _name: string;
+  private _typing: boolean | undefined;
+  private _git: string | boolean | undefined;
+
+  constructor(
+    private resultPrompt: IInProcessingDTO,
+    private initializers: Array<string> = ['json', 'code', 'initial', 'eslint'],
+  ) {
+    const { project, typing, git } = this.resultPrompt;
+
+    this._name = project.replace(/\s/g, '-');
+    this._typing = typing;
+    this._git = git;
+
     this.in_process();
   }
 
   private async in_process() {
-    const { project, git, typing } = this.resultPrompt;
-    const nameProject = project.replace(/\s/g, '-');
-
     try {
-      await this.create_initial_structure({ project: nameProject, typing });
-      await this.json({
-        project: nameProject,
-        json: new whichJSON(typing).json,
-      });
-
-      if (git) {
-        await this.git({ project: nameProject });
-      }
-
-      this.is_type({ project: nameProject, typing });
-      this.finished({ project: nameProject });
+      await this.create_structure({ project: this._name });
     } catch (err) {
       if (err instanceof Error) {
-        if (!err.message.includes('O (diretorio/arquivo) já existe')) {
-          execCommands.execute({ commands: `rm -rf ${nameProject}` });
-        }
         console.error(err.message);
       }
     }
   }
 
-  private async create_initial_structure({
-    project,
-    typing,
-  }: IInProcessingDTO) {
-    execCommands.execute({
+  private async create_structure({ project }: IInProcessingDTO) {
+    exeCommands.execute({
       commands: `
         mkdir ${project} &&
         cd ${project} &&
@@ -57,85 +39,26 @@ class Processig {
       `,
     });
 
-    console.log('\nPROCESSANDO...');
-    await this.initial_files({ project, typing });
-  }
-
-  private async initial_files({ project, typing }: IInProcessingDTO) {
-    await writeFile.execute({
-      directory_name: `${project}/.vscode`,
-      filename: 'settings.json',
-      text: '',
-      formate: true,
-      json: vcCodeSettings,
-    });
-
-    await writeFile.execute({
-      directory_name: project,
-      filename: ['.editorconfig', '.prettierrc.js', 'readme.md'],
-      text: [editorconfig, prettierrc, readme],
-    });
-
-    await this.eslint({ project, typing });
-  }
-
-  private async git({ project }: IInProcessingDTO) {
-    execCommands.execute({ commands: `cd ${project} && git init` });
-
-    await writeFile.execute({
-      filename: '.gitignore',
-      text: gitIgnore,
-      directory_name: project,
-    });
-  }
-
-  private async is_type({ project, typing }: IInProcessingDTO) {
-    if (typing) {
-      await writeFile.execute({
-        directory_name: `${project}/src`,
-        filename: 'server.ts',
-        text: serverTyp,
-      });
-
-      await writeFile.execute({
-        directory_name: `${project}`,
-        filename: 'tsconfig.json',
-        text: '',
-        formate: true,
-        json: tsconfig,
-      });
-    } else {
-      await writeFile.execute({
-        directory_name: `${project}/src`,
-        filename: 'server.js',
-        text: serverJav,
+    if (this._git) {
+      this.initializers.push('git');
+      exeCommands.execute({
+        commands: `cd ${this._name} && git init -q`,
       });
     }
-  }
 
-  private async json({ json, project }: IInProcessingDTO) {
-    await writeFile.execute({
-      directory_name: project,
-      filename: 'package.json',
-      text: '',
-      formate: true,
-      json,
+    if (this._typing) this.initializers.push('with_typing');
+    if (!this._typing) this.initializers.push('no_typing');
+
+    await new Control(
+      this._name,
+      this._typing,
+      this.initializers,
+      writeFile,
+    ).exec({
+      final_comands: exeCommands,
+      initial_msg: '\n✎ processando...',
+      final_msg: '\n✔ processo finalizado!',
     });
-  }
-
-  private async eslint({ project, typing }: IInProcessingDTO) {
-    const response = new eslintConfig(typing);
-
-    await writeFile.execute({
-      directory_name: project,
-      filename: ['.eslintrc.js', '.eslintignore'],
-      text: [response.configJs, response.ignore],
-    });
-  }
-
-  private finished({ project }: IInProcessingDTO) {
-    execCommands.execute({ commands: `cd ${project} && yarn` });
-    console.log('\nFINALIZADO');
   }
 }
 

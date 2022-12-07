@@ -22,7 +22,7 @@ class WriteFile implements IWriteFile {
               typeof directory_name === 'object'
                 ? directory_name[i]
                 : directory_name,
-            formate,
+            formate: typeof formate === 'object' ? formate[i] : formate,
             json:
               typeof json === 'object' ? json[i as keyof typeof json] : json,
           });
