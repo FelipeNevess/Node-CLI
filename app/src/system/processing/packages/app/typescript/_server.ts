@@ -7,7 +7,7 @@ export const serverTyp = `
   const port = process.env.PORT || 3333;
 
   app.use(bodyParser.json());
-  app.use(cors({ origin: "http://localhost:3000", methods: "GET" }));
+  app.use(cors({ origin: 'http://localhost:3000', methods: 'GET' }));
 
   app.get('/', (_req, res) => res.status(200).json({ name: 'Hello World!' }));
 

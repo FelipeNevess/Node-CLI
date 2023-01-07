@@ -8,6 +8,7 @@ import {
   readme,
   gitIgnore,
 } from './base';
+import { sequelise } from './orm';
 
 export {
   gitIgnore,
@@ -18,6 +19,7 @@ export {
   serverJav,
   serverTyp,
   tsconfig,
+  sequelise,
   eslintConfig,
   whichJSON,
 };

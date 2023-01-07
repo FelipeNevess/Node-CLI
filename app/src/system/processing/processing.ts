@@ -6,16 +6,18 @@ class Processig {
   private _name: string;
   private _typing: boolean | undefined;
   private _git: string | boolean | undefined;
+  private _orm: string | boolean | undefined;
 
   constructor(
     private resultPrompt: IInProcessingDTO,
     private initializers: Array<string> = ['json', 'code', 'initial', 'eslint'],
   ) {
-    const { project, typing, git } = this.resultPrompt;
+    const { project, typing, git, orm } = this.resultPrompt;
 
     this._name = project.replace(/\s/g, '-');
     this._typing = typing;
     this._git = git;
+    this._orm = orm;
 
     this.in_process();
   }
@@ -53,11 +55,14 @@ class Processig {
       this._name,
       this._typing,
       this.initializers,
+      this._orm ? this._orm : false,
       writeFile,
     ).exec({
       final_comands: exeCommands,
-      initial_msg: '\n✎ processando...',
-      final_msg: '\n✔ processo finalizado!',
+      initial_msg: '\n✏️ processando...',
+      final_msg: `✅ processo finalizado!
+        \n\n\n- Não deixe de ver o arquivo help.txt :)
+        \n- - - - - - - - - - - - - - - - - - - -`,
     });
   }
 }

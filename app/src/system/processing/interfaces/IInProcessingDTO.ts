@@ -5,4 +5,5 @@ export interface IInProcessingDTO {
   git?: string | boolean;
   typing?: boolean;
   json?: IJson;
+  orm?: string | boolean;
 }

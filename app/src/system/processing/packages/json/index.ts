@@ -2,9 +2,12 @@ import { IJson } from './interfaces';
 
 class whichJSON {
   private tscript: boolean | undefined;
+  private orm: boolean | string;
   public json: IJson = {
     name: 'project-node-js',
+    version: '1.0.0',
     main: 'src/server.js',
+    license: 'MIT',
     scripts: {
       dev: 'nodemon src/server.js',
     },
@@ -24,10 +27,12 @@ class whichJSON {
     },
   };
 
-  constructor(tscript: boolean | undefined) {
+  constructor(tscript: boolean | undefined, orm: boolean | string) {
     this.tscript = tscript;
+    this.orm = orm;
 
     this.typescript();
+    this.is_orm();
   }
 
   private typescript() {
@@ -54,6 +59,30 @@ class whichJSON {
           '@typescript-eslint/parser': '^5.32.0',
         },
       };
+    }
+  }
+
+  private is_orm() {
+    if (this.orm) {
+      this.json.scripts = {
+        ...this.json.scripts,
+        dev: 'nodemon app/server.js',
+        'db:create': 'npx sequelize db:create',
+        'db:migrate': 'npx sequelize db:migrate',
+      };
+      this.json.dependencies = {
+        ...this.json.dependencies,
+        sequelize: '^6.28.0',
+        mysql2: '^2.3.3',
+        dotenv: '^16.0.3',
+      };
+
+      this.json.devDependencies = {
+        ...this.json.devDependencies,
+        'sequelize-cli': '^6.5.2',
+      };
+
+      this.json.main = 'app/server.js';
     }
   }
 }

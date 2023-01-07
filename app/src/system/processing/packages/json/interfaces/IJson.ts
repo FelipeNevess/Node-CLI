@@ -1,14 +1,21 @@
 export interface IJson {
-  name: string;
-  main: string;
+  name?: string;
+  version?: string;
+  main?: string;
+  license?: string;
   scripts: {
     dev?: string;
     start?: string;
+    'db:create'?: string;
+    'db:migrate'?: string;
   };
   dependencies: {
     cors?: string;
     express?: string;
     uuid?: string;
+    sequelize?: string;
+    mysql2?: string;
+    dotenv?: string;
     'body-parser'?: string;
   };
   devDependencies: {
@@ -30,5 +37,6 @@ export interface IJson {
     'eslint-config-prettier'?: string;
     'eslint-plugin-import'?: string;
     'eslint-plugin-prettier'?: string;
+    'sequelize-cli'?: string;
   };
 }
